@@ -1,5 +1,5 @@
 // This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// learn more about it in the docs: https://pr is.ly/d/prisma-schema
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
@@ -11,4 +11,15 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Creature {
+  id            Int      @id @default(autoincrement())
+  name          String  @unique 
+  description   String   
+  lastSeen      String   
+  specimenCount Int      
+  extinct       Boolean  @default(false)
+  createdAt     DateTime @default(now()) 
+  updatedAt     DateTime @updatedAt     
 }
